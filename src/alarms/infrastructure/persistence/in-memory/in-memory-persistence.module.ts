@@ -7,4 +7,4 @@ import { InMemoryAlarmRepository } from './repositories/in-memory.alarm.reposito
   providers: [{ provide: AlarmRepository, useClass: InMemoryAlarmRepository }],
   exports: [AlarmRepository], //allowing alarmRepository to be used by other modules => this is where we bind the port to an adapter
 })
-export class AppModule {}
+export class InMemoryAlarmPersistenceModule {}

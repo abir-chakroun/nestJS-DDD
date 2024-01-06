@@ -9,4 +9,4 @@ import { OrmAlarmRepository } from './repositories/orm.alarm.repository';
   providers: [{ provide: AlarmRepository, useClass: OrmAlarmRepository }],
   exports: [AlarmRepository], //allowing alarmRepository to be used by other modules => this is where we bind the port to an adapter
 })
-export class AppModule {}
+export class OrmAlarmPersistenceModule {}

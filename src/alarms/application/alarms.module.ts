@@ -1,4 +1,5 @@
-import { Module } from '@nestjs/common';
+import { DynamicModule, Module } from '@nestjs/common';
+import { Type } from 'typescript';
 import { AlarmFactory } from '../domain/factories/alarm.factory';
 import { AlarmsController } from '../presenters/http/alarms.controller';
 import { AlarmsService } from './alarms.service';
@@ -7,4 +8,11 @@ import { AlarmsService } from './alarms.service';
   controllers: [AlarmsController],
   providers: [AlarmsService, AlarmFactory],
 })
-export class AlarmsModule {}
+export class AlarmsModule {
+  static withInfrastructure(infrastructureModule: Type | DynamicModule) {
+    return {
+      module: AlarmsModule,
+      imports: [infrastructureModule],
+    };
+  }
+}
